@@ -3,6 +3,11 @@ extends ../layout
 block content
   .page-header
     h3 Profile Information
+    
+  if secrets.personaAuth
+    form.form-horizontal(action='/auth/browserid', method='POST')
+      input(type='hidden', name='_csrf', value=token)
+      input(type='hidden', name='assertion')        
 
   form.form-horizontal(action='/account/profile', method='POST')
     input(type='hidden', name='_csrf', value=token)
@@ -100,10 +105,8 @@ block content
       p: a(href='/auth/github') Link your GitHub account
 
   if secrets.personaAuth
+    script(src="https://login.persona.org/include.js")  
     script(type="text/javascript", src="/js/lib/personaAuth.js")
-    form.form-horizontal(action='/auth/browserid', method='POST')
-      input(type='hidden', name='_csrf', value=token)
-      input(type='hidden', name='assertion')        
     if user.browserid
       p: a.text-danger(href='/account/unlink/browserid') Unlink your Persona account
     else

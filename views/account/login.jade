@@ -2,6 +2,11 @@ extends ../layout
 
 block content
   .col-sm-8.col-sm-offset-2
+    if secrets.personaAuth
+      form(method='POST', action='/auth/browserid')
+        input(type='hidden', name='_csrf', value=token)
+        input(type='hidden', name='assertion')
+  
     form(method='POST')
       input(type='hidden', name='_csrf', value=token)
       legend Sign In
@@ -24,10 +29,8 @@ block content
               i.fa.fa-google-plus
               | Google
           if secrets.personaAuth
+            script(src="https://login.persona.org/include.js")
             script(type="text/javascript", src="/js/lib/personaAuth.js")
-            form(method='POST', action='/auth/browserid')
-              input(type='hidden', name='_csrf', value=token)
-              input(type='hidden', name='assertion')
             a.btn.btn-browserid(id="browserid",href="#")
               img(src="/img/persona_logo_glyph.png")
               | Persona
