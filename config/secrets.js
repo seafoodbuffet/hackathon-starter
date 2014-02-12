@@ -1,7 +1,13 @@
 module.exports = {
   db: 'localhost',
 
+  localAuth: true,
   sessionSecret: "Your Session Secret goes here",
+
+  mailgun: {
+    login: 'Your Mailgun SMTP Username',
+    password: 'Your Mailgun SMTP Password'
+  },
 
   sendgrid: {
     user: 'Your SendGrid Username',
@@ -17,6 +23,7 @@ module.exports = {
     secret: 'Your API Secret'
   },
 
+  facebookAuth: true,
   facebook: {
     clientID: 'Your App ID',
     clientSecret: 'Your App Secret',
@@ -24,6 +31,7 @@ module.exports = {
     passReqToCallback: true
   },
 
+  githubAuth: true,
   github: {
     clientID: 'Your Client ID',
     clientSecret: 'Your Client Secret',
@@ -31,6 +39,7 @@ module.exports = {
     passReqToCallback: true
   },
 
+  twitterAuth: true,
   twitter: {
     consumerKey: 'Your Consumer Key',
     consumerSecret: 'Your Consumer Secret',
@@ -38,19 +47,21 @@ module.exports = {
     passReqToCallback: true
   },
 
+  googleAuth: true,
   google: {
     clientID: 'Your Client ID',
     clientSecret: 'Your Client Secret',
     callbackURL: '/auth/google/callback',
     passReqToCallback: true
   },
-  
+
+  personaAuth: true,
 	persona: {
 		audience: 'http://localhost:3000', //replace with your app URL or it will fail
     assertionField: 'assertion', //do not modify
     passReqToCallback: true  //do not modify
 	},
-	
+
   steam: {
     apiKey: 'Your Steam API Key'
   },
@@ -70,6 +81,12 @@ module.exports = {
     clientId: 'Your Client ID',
     clientSecret: 'Your Client Secret',
     redirectUrl: 'http://localhost:3000/auth/foursquare/callback'
+  },
+
+  venmo: {
+    clientId: 'Your Venmo Client ID',
+    clientSecret: 'Your Venmo Client Secret',
+    redirectUrl: 'http://localhost:3000/auth/venmo/callback'
   },
 
   paypal: {
